@@ -493,6 +493,15 @@ select:focus-visible {
   color: var(--text);
 }
 
+.field-error {
+  display: block;
+  min-height: 18px;
+  margin-top: 6px;
+  font-size: 0.8rem;
+  color: #c62828;
+  font-weight: 600;
+}
+
 .form-group input,
 .form-group textarea,
 .form-group select {
