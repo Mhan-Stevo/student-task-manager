@@ -4,71 +4,88 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Student Task Manager</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
     <div class="app">
       <header class="header">
-        <h1 class="title">Student Task Manager</h1>
+        <button class="menu-button" type="button" aria-label="Open menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <h1 class="title">Task Manager</h1>
+        <button class="search-button" type="button" aria-label="Search tasks">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="6"></circle>
+            <path d="M16 16L21 21"></path>
+          </svg>
+        </button>
       </header>
 
-      <input
-        class="search-bar"
-        type="search"
-        placeholder="Search tasks..."
-        aria-label="Search tasks"
-      />
+      <label class="search-wrap" for="taskSearch">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="6"></circle>
+          <path d="M16 16L21 21"></path>
+        </svg>
+        <input id="taskSearch" class="search-bar" type="search" placeholder="Search tasks..." aria-label="Search tasks" />
+      </label>
 
       <div class="filters" aria-label="Task filters">
         <button class="filter-btn active" type="button">All</button>
-        <button class="filter-btn" type="button">Pending</button>
-        <button class="filter-btn" type="button">In Progress</button>
+        <button class="filter-btn" type="button">Active</button>
         <button class="filter-btn" type="button">Completed</button>
       </div>
 
-      <main class="task-list" aria-live="polite">
-        <article class="task-card">
-          <div class="task-card-header">
-            <div>
-              <h2 class="task-title">Math Assignment</h2>
-              <p class="task-meta">Due: 2026-09-03 • Computer Science</p>
+      <main id="taskList" class="task-list" aria-live="polite">
+        <article class="task-card task-card--high">
+          <div class="task-main">
+            <button class="task-check" type="button" aria-label="Mark Study for Midterms as complete"></button>
+            <div class="task-text">
+              <h2 class="task-title">Study for Midterms</h2>
+              <div class="task-meta-row">
+                <span class="priority priority--high">High</span>
+                <span class="task-date">Oct 24</span>
+              </div>
             </div>
-            <span class="badge high">High</span>
           </div>
-          <p class="task-meta">Complete exercises 1-10 and submit the PDF before the deadline.</p>
           <div class="task-actions">
-            <button class="mark-done" type="button">Mark done</button>
-            <button class="delete" type="button">Delete</button>
+            <button class="icon-btn" type="button" aria-label="Edit task">✎</button>
+            <button class="icon-btn" type="button" aria-label="Delete task">🗑</button>
           </div>
         </article>
 
-        <article class="task-card">
-          <div class="task-card-header">
-            <div>
-              <h2 class="task-title">Biology Lab Report</h2>
-              <p class="task-meta">Due: 2026-09-05 • Science</p>
+        <article class="task-card task-card--medium">
+          <div class="task-main">
+            <button class="task-check" type="button" aria-label="Mark Math Homework as complete"></button>
+            <div class="task-text">
+              <h2 class="task-title">Math Homework</h2>
+              <div class="task-meta-row">
+                <span class="priority priority--medium">Medium</span>
+                <span class="task-date">Oct 20</span>
+              </div>
             </div>
-            <span class="badge medium">Medium</span>
           </div>
-          <p class="task-meta">Write the results section and finish the final analysis summary.</p>
           <div class="task-actions">
-            <button class="mark-done" type="button">Mark done</button>
-            <button class="delete" type="button">Delete</button>
+            <button class="icon-btn" type="button" aria-label="Edit task">✎</button>
+            <button class="icon-btn" type="button" aria-label="Delete task">🗑</button>
           </div>
         </article>
 
-        <article class="task-card">
-          <div class="task-card-header">
-            <div>
-              <h2 class="task-title">History Reading Notes</h2>
-              <p class="task-meta">Due: 2026-09-07 • Humanities</p>
+        <article class="task-card task-card--low is-complete">
+          <div class="task-main">
+            <button class="task-check checked" type="button" aria-label="Buy Groceries completed"></button>
+            <div class="task-text">
+              <h2 class="task-title">Buy Groceries</h2>
+              <div class="task-meta-row">
+                <span class="priority priority--low">Low</span>
+                <span class="task-date task-date--done">Done</span>
+              </div>
             </div>
-            <span class="badge low">Low</span>
           </div>
-          <p class="task-meta">Summarize the chapter and highlight the key events for class discussion.</p>
           <div class="task-actions">
-            <button class="mark-done" type="button">Mark done</button>
-            <button class="delete" type="button">Delete</button>
+            <button class="icon-btn" type="button" aria-label="Edit task">✎</button>
+            <button class="icon-btn" type="button" aria-label="Delete task">🗑</button>
           </div>
         </article>
       </main>
