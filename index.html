@@ -3,19 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Student Task Manager</title>
+    <title>Task Manager</title>
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
-    <div class="app">
-      <header class="header">
-        <button class="menu-button" type="button" aria-label="Open menu">
+    <div class="app-shell">
+      <header class="topbar" aria-label="Task manager header">
+        <button class="icon-button menu-button" type="button" aria-label="Open menu">
           <span></span>
           <span></span>
           <span></span>
         </button>
-        <h1 class="title">Task Manager</h1>
-        <button class="search-button" type="button" aria-label="Search tasks">
+
+        <h1 class="page-title">Task Manager</h1>
+
+        <button class="icon-button search-button" type="button" aria-label="Search tasks">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="11" cy="11" r="6"></circle>
             <path d="M16 16L21 21"></path>
@@ -23,116 +25,107 @@
         </button>
       </header>
 
-      <label class="search-wrap" for="taskSearch">
+      <label class="search-box" for="taskSearch">
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <circle cx="11" cy="11" r="6"></circle>
           <path d="M16 16L21 21"></path>
         </svg>
-        <input id="taskSearch" class="search-bar" type="search" placeholder="Search tasks..." aria-label="Search tasks" />
+        <input id="taskSearch" type="search" placeholder="Search tasks..." aria-label="Search tasks" />
       </label>
 
-      <div class="filters" aria-label="Task filters">
-        <button class="filter-btn active" type="button">All</button>
-        <button class="filter-btn" type="button">Active</button>
-        <button class="filter-btn" type="button">Completed</button>
+      <div class="filter-bar" role="tablist" aria-label="Task filters">
+        <button class="filter-chip active" type="button" data-filter="all">All</button>
+        <button class="filter-chip" type="button" data-filter="active">Active</button>
+        <button class="filter-chip" type="button" data-filter="completed">Completed</button>
       </div>
 
-      <main id="taskList" class="task-list" aria-live="polite">
-        <article class="task-card task-card--high">
-          <div class="task-main">
-            <button class="task-check" type="button" aria-label="Mark Study for Midterms as complete"></button>
-            <div class="task-text">
-              <h2 class="task-title">Study for Midterms</h2>
-              <div class="task-meta-row">
-                <span class="priority priority--high">High</span>
-                <span class="task-date">Oct 24</span>
-              </div>
-            </div>
-          </div>
-          <div class="task-actions">
-            <button class="icon-btn" type="button" aria-label="Edit task">✎</button>
-            <button class="icon-btn" type="button" aria-label="Delete task">🗑</button>
-          </div>
-        </article>
+      <main id="taskList" class="task-list" aria-live="polite"></main>
 
-        <article class="task-card task-card--medium">
-          <div class="task-main">
-            <button class="task-check" type="button" aria-label="Mark Math Homework as complete"></button>
-            <div class="task-text">
-              <h2 class="task-title">Math Homework</h2>
-              <div class="task-meta-row">
-                <span class="priority priority--medium">Medium</span>
-                <span class="task-date">Oct 20</span>
-              </div>
-            </div>
-          </div>
-          <div class="task-actions">
-            <button class="icon-btn" type="button" aria-label="Edit task">✎</button>
-            <button class="icon-btn" type="button" aria-label="Delete task">🗑</button>
-          </div>
-        </article>
+      <section id="emptyState" class="empty-state hidden" aria-live="polite">
+        <div class="empty-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M7 3.5h8.5L19 8v10.5A2.5 2.5 0 0 1 16.5 21h-9A2.5 2.5 0 0 1 5 18.5v-12A2.5 2.5 0 0 1 7.5 4H7z"></path>
+            <path d="M15.5 3.5V8h4.5"></path>
+            <path d="M9 12.5l2 2 4-5"></path>
+          </svg>
+        </div>
+        <p>No tasks yet. Click + to add your first task.</p>
+      </section>
 
-        <article class="task-card task-card--low is-complete">
-          <div class="task-main">
-            <button class="task-check checked" type="button" aria-label="Buy Groceries completed"></button>
-            <div class="task-text">
-              <h2 class="task-title">Buy Groceries</h2>
-              <div class="task-meta-row">
-                <span class="priority priority--low">Low</span>
-                <span class="task-date task-date--done">Done</span>
-              </div>
-            </div>
-          </div>
-          <div class="task-actions">
-            <button class="icon-btn" type="button" aria-label="Edit task">✎</button>
-            <button class="icon-btn" type="button" aria-label="Delete task">🗑</button>
-          </div>
-        </article>
-      </main>
+      <button id="fab" class="fab" type="button" aria-label="Add new task">+</button>
+
+      <nav class="bottom-nav" aria-label="Main navigation">
+        <button class="nav-item active" type="button" aria-label="Tasks">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 7.5h16"></path>
+            <path d="M4 12h16"></path>
+            <path d="M4 16.5h16"></path>
+          </svg>
+          <span>Tasks</span>
+        </button>
+        <button class="nav-item" type="button" aria-label="Calendar">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="16" rx="2"></rect>
+            <path d="M8 3v4M16 3v4M3 10h18"></path>
+          </svg>
+          <span>Calendar</span>
+        </button>
+        <button class="nav-item" type="button" aria-label="Focus">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="7"></circle>
+            <path d="M12 2v4M12 18v4M2 12h4M18 12h4"></path>
+          </svg>
+          <span>Focus</span>
+        </button>
+        <button class="nav-item" type="button" aria-label="Profile">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="8" r="4"></circle>
+            <path d="M5 19c1.5-3 4-4.5 7-4.5S17.5 16 19 19"></path>
+          </svg>
+          <span>Profile</span>
+        </button>
+      </nav>
     </div>
 
-    <button class="fab" type="button" aria-label="Add new task">+</button>
+    <div id="taskModal" class="modal-overlay hidden" aria-hidden="true">
+      <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="taskModalTitle">
+        <h2 id="taskModalTitle">Add New Task</h2>
 
-    <div class="modal" aria-hidden="true">
-      <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="task-modal-title">
-        <h2 id="task-modal-title">Add New Task</h2>
-
-        <form>
+        <form id="taskForm">
           <div class="form-group">
-            <label for="task-title">Title</label>
-            <input id="task-title" type="text" placeholder="Enter task title" />
+            <label for="taskTitle">Title</label>
+            <input id="taskTitle" name="title" type="text" placeholder="Enter task title" required />
           </div>
 
           <div class="form-group">
-            <label for="task-description">Description</label>
-            <textarea id="task-description" rows="4" placeholder="Add details about the task"></textarea>
+            <label for="taskDescription">Description</label>
+            <textarea id="taskDescription" name="description" rows="4" placeholder="Add details about the task"></textarea>
           </div>
 
-          <div class="form-group">
-            <label for="task-due-date">Due Date</label>
-            <input id="task-due-date" type="date" />
-          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="taskDueDate">Due Date</label>
+              <input id="taskDueDate" name="dueDate" type="date" />
+            </div>
 
-          <div class="form-group">
-            <label for="task-priority">Priority</label>
-            <select id="task-priority">
-              <option value="high">High</option>
-              <option value="medium">Medium</option>
-              <option value="low">Low</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="task-category">Category</label>
-            <input id="task-category" type="text" placeholder="e.g. Math, Science" />
+            <div class="form-group">
+              <label for="taskPriority">Priority</label>
+              <select id="taskPriority" name="priority">
+                <option value="High">High</option>
+                <option value="Medium" selected>Medium</option>
+                <option value="Low">Low</option>
+              </select>
+            </div>
           </div>
 
           <div class="form-actions">
-            <button class="btn btn-secondary" type="button">Cancel</button>
-            <button class="btn btn-primary" type="submit">Save Task</button>
+            <button class="secondary-btn" type="button" id="cancelTask">Cancel</button>
+            <button class="primary-btn" type="submit">Save Task</button>
           </div>
         </form>
       </div>
     </div>
+
+    <script src="js/script.js"></script>
   </body>
 </html>
