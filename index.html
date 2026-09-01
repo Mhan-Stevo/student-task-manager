@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Task Manager</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <h1 class="title">Student Task Manager</h1>
+      </header>
+
+      <input
+        class="search-bar"
+        type="search"
+        placeholder="Search tasks..."
+        aria-label="Search tasks"
+      />
+
+      <div class="filters" aria-label="Task filters">
+        <button class="filter-btn active" type="button">All</button>
+        <button class="filter-btn" type="button">Pending</button>
+        <button class="filter-btn" type="button">In Progress</button>
+        <button class="filter-btn" type="button">Completed</button>
+      </div>
+
+      <main class="task-list" aria-live="polite">
+        <article class="task-card">
+          <div class="task-card-header">
+            <div>
+              <h2 class="task-title">Math Assignment</h2>
+              <p class="task-meta">Due: 2026-09-03 • Computer Science</p>
+            </div>
+            <span class="badge high">High</span>
+          </div>
+          <p class="task-meta">Complete exercises 1-10 and submit the PDF before the deadline.</p>
+          <div class="task-actions">
+            <button class="mark-done" type="button">Mark done</button>
+            <button class="delete" type="button">Delete</button>
+          </div>
+        </article>
+
+        <article class="task-card">
+          <div class="task-card-header">
+            <div>
+              <h2 class="task-title">Biology Lab Report</h2>
+              <p class="task-meta">Due: 2026-09-05 • Science</p>
+            </div>
+            <span class="badge medium">Medium</span>
+          </div>
+          <p class="task-meta">Write the results section and finish the final analysis summary.</p>
+          <div class="task-actions">
+            <button class="mark-done" type="button">Mark done</button>
+            <button class="delete" type="button">Delete</button>
+          </div>
+        </article>
+
+        <article class="task-card">
+          <div class="task-card-header">
+            <div>
+              <h2 class="task-title">History Reading Notes</h2>
+              <p class="task-meta">Due: 2026-09-07 • Humanities</p>
+            </div>
+            <span class="badge low">Low</span>
+          </div>
+          <p class="task-meta">Summarize the chapter and highlight the key events for class discussion.</p>
+          <div class="task-actions">
+            <button class="mark-done" type="button">Mark done</button>
+            <button class="delete" type="button">Delete</button>
+          </div>
+        </article>
+      </main>
+    </div>
+
+    <button class="fab" type="button" aria-label="Add new task">+</button>
+
+    <div class="modal" aria-hidden="true">
+      <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="task-modal-title">
+        <h2 id="task-modal-title">Add New Task</h2>
+
+        <form>
+          <div class="form-group">
+            <label for="task-title">Title</label>
+            <input id="task-title" type="text" placeholder="Enter task title" />
+          </div>
+
+          <div class="form-group">
+            <label for="task-description">Description</label>
+            <textarea id="task-description" rows="4" placeholder="Add details about the task"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="task-due-date">Due Date</label>
+            <input id="task-due-date" type="date" />
+          </div>
+
+          <div class="form-group">
+            <label for="task-priority">Priority</label>
+            <select id="task-priority">
+              <option value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="task-category">Category</label>
+            <input id="task-category" type="text" placeholder="e.g. Math, Science" />
+          </div>
+
+          <div class="form-actions">
+            <button class="btn btn-secondary" type="button">Cancel</button>
+            <button class="btn btn-primary" type="submit">Save Task</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
