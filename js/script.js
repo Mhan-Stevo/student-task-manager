@@ -61,7 +61,7 @@ function addTask(title, description, priority, dueDate) {
   if (!trimmedTitle) return null;
 
   const newTask = {
-    id: generateUniqueId(),git add .
+    id: generateUniqueId(),
     title: trimmedTitle,
     description: description ? description.trim() : '',
     priority: priority || 'Medium',
